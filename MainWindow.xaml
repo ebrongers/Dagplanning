@@ -13,7 +13,7 @@
         <TextBox Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="184,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276"/>
         <Label x:Name="label2" Content="Toevoegen" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="20,144,0,0" Stroke="Black" VerticalAlignment="Top" Width="529"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="100" Margin="76,206,0,0" VerticalAlignment="Top" Width="356"/>
+        <ListBox x:Name="lbxAdressen" HorizontalAlignment="Left" Height="100" Margin="76,206,0,0" VerticalAlignment="Top" Width="356"/>
         <Button x:Name="btnVerwijderen" Content="Verwijderen" HorizontalAlignment="Left" Margin="476,206,0,0" VerticalAlignment="Top" Width="73" Height="26"/>
         <Label x:Name="label3" Content="Selecteer een e-mailadres om te verwijderen" HorizontalAlignment="Left" Margin="70,181,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2_Copy" Content="Verwijderen" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
