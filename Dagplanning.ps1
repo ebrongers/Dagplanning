@@ -20,22 +20,29 @@ function LoadForm($formname) {
 	return $Form
 }
 
-$Form=LoadForm('MainWIndow.xaml')
-
+$MainForm=LoadForm('MainWindow.xaml')
+$noEmailForm=LoadForm('noEmailForm.xaml')
 
 #===========================================================================
-# Functies 
+# Formulier Functies 
 #===========================================================================
 Function btnAnnuleren-click{
 		Get-PSSession | Remove-PSSession
-		$Form.Close()
+		$MainForm.Close()
 }
 
 Function btnVerwijderen-click{
-	Get-PSSession | Remove-PSSession
-	$Form.Close()
+	$noEmailForm.ShowDialog() | Out-Null
+	
 }
 
+Function FrmNoEmailFormBtnOke-click {
+	$noEmailForm.Hide()
+}
+
+#===========================================================================
+# Algemene Functies 
+#===========================================================================
 Function filllbxAdressen {
 	
 	$arr_listAgencies | ForEach-Object {
@@ -43,11 +50,12 @@ Function filllbxAdressen {
 	}
 }
 
+
+
 Function createEmailUser($fullname,$email) {
 	if ($email -eq "") {
-	   $Label1.Text = "Fout: Geen adres aangemaakt! `n E-mail adres ongeldig"
-	   Start-Sleep -Seconds 2
-	   $Form.Close();
+	   $noEmailForm.ShowDialog() | Out-Null
+
 		exit
 	}
 }
@@ -57,10 +65,12 @@ Function createEmailUser($fullname,$email) {
 #===========================================================================
 $btnAnnuleren.Add_Click({btnAnnuleren-click})
 $btnVerwijderen.Add_Click({btnVerwijderen-click})
+$FrmNoEmailFormBtnOke.Add_Click({FrmNoEmailFormBtnOke-click})
+$FrmMainWindowBtnToevoegen.Add_Click({createEmailUser})
 
 #===========================================================================
 # Main programma
 #===========================================================================
 $arr_listAgencies="ADMIN1","ADMIN2"
 filllbxAdressen
-$Form.ShowDialog() | out-null
+$MainForm.ShowDialog() | out-null

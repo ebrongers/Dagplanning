@@ -29,6 +29,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="MainWindow.xaml" />
+    <Content Include="NoEmailForm.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dagplanning.ps1" />

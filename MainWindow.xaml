@@ -4,7 +4,7 @@
         Title="MainWindow" Height="407.667" Width="585">
     <Grid Height="368" VerticalAlignment="Top">
         <TextBox Name="txtNaam" HorizontalAlignment="Left" Height="24" Margin="184,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
-        <Button Name="btnAanmaken" Content="Toevoegen" HorizontalAlignment="Left" Height="26" Margin="476,94,0,0" VerticalAlignment="Top" Width="73"/>
+        <Button x:Name="FrmMainWindowBtnToevoegen" Content="Toevoegen" HorizontalAlignment="Left" Height="26" Margin="476,94,0,0" VerticalAlignment="Top" Width="73"/>
         <Button x:Name="btnAnnuleren" Content="Sluiten" HorizontalAlignment="Left" Height="26" Margin="476,334,0,0" VerticalAlignment="Top" Width="73"/>
         <Label Name="label" Content="Voornaam" HorizontalAlignment="Left" Height="24" Margin="76,27,0,0" VerticalAlignment="Top" Width="70"/>
         <Label Name="label1" Content="Achternaam" HorizontalAlignment="Left" Height="23" Margin="76,55,0,0" VerticalAlignment="Top" Width="77"/>
