@@ -2,6 +2,7 @@
 # XAML Code - Imported from Visual Studio Express WPF Application
 #==============================================================================================
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
+[System.Reflection.Assembly]::LoadWithPartialName("System.Net") 
 function LoadForm($formname) {
 	$inputXML = Get-Content($formname)
 	$inputXML = $inputXML -replace 'mc:Ignorable="d"','' -replace "x:N",'N'  -replace '^<Win.*', '<Window'
@@ -32,12 +33,18 @@ Function btnAnnuleren-click{
 }
 
 Function btnVerwijderen-click{
-	$noEmailForm.ShowDialog() | Out-Null
+	
 	
 }
 
 Function FrmNoEmailFormBtnOke-click {
 	$noEmailForm.Hide()
+}
+
+Function FrmMainWindowBtnToevoegen-Click() {
+	$fullname=""
+
+	createEmailUser($fullname,$FrmMainWindowtxtEmail.Text)
 }
 
 #===========================================================================
@@ -53,20 +60,40 @@ Function filllbxAdressen {
 
 
 Function createEmailUser($fullname,$email) {
-	if ($email -eq "") {
+	write-host $fullname
+		if ( ValidEmailAddress($email) -eq $false) {
 	   $noEmailForm.ShowDialog() | Out-Null
+			}
+		
+	
+}
 
-		exit
-	}
+Function ValidEmailAddress($address)
+{Write-Host "test"
+ #try
+ #{
+  $x = New-Object System.Net.Mail.MailAddress($address)
+	 
+ # return $true
+ #}
+ #catch
+ #{
+  return $false
+ #}
 }
 
 #===========================================================================
 # Add events to Form Objects
 #===========================================================================
+
+# FrmMainForm
 $btnAnnuleren.Add_Click({btnAnnuleren-click})
 $btnVerwijderen.Add_Click({btnVerwijderen-click})
+$FrmMainWindowBtnToevoegen.Add_Click({FrmMainWindowBtnToevoegen-Click})
+
+# FrmNoEmailForm
 $FrmNoEmailFormBtnOke.Add_Click({FrmNoEmailFormBtnOke-click})
-$FrmMainWindowBtnToevoegen.Add_Click({createEmailUser})
+
 
 #===========================================================================
 # Main programma
